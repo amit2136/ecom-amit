@@ -24,7 +24,7 @@ export default function Login() {
 
     const data = await response.json();
     if (data.success) {
-      route.push("/products");
+      route.push("/profile");
     }
   };
 
