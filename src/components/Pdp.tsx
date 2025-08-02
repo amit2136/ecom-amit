@@ -5,10 +5,8 @@ import styles from "./Pdp.module.css";
 
 import { Button, Card, Paper, Stack } from "@mui/material";
 
-
 interface PDPProps {
   productId: string;
-  addToCart: () => void;
 }
 
 interface Product {
@@ -33,14 +31,6 @@ export default function PDP({ productId }: PDPProps) {
     getProductDetail();
   }, [productId]);
 
-
-  const addToCart = () =>{
-    setCart(product);
-  }
-
-
-  console.log('add to cart', cart);
-
   if (!product) return null;
 
   console.log("product", product);
@@ -49,22 +39,22 @@ export default function PDP({ productId }: PDPProps) {
       <div className={styles["header"]}>
         <span className={styles["cart-icon"]} role="img" aria-label="cart">
           🛒
-          <span className={styles['cart-count']}>{cart.length}</span>
+          <span className={styles["cart-count"]}>{cart.length}</span>
         </span>
       </div>
-      <Stack  className={styles["pdp-container"]}>
-        <Stack direction='row' spacing={5}>
-        <div className={styles["pdp_image"]}>
-          <img src={product?.images[0]} alt="" />
-        </div>
-        <Paper variant="elevation" className={styles["pdp_detail"]}>
-          <h2>{product.title}</h2>
-          <p>{product.price}</p>
-          <p>Rating : {product.rating}</p>
-          <div className={styles["add-to-cart"]}>
-            <Button onClick={addToCart}>Add</Button>
+      <Stack className={styles["pdp-container"]}>
+        <Stack direction="row" spacing={5}>
+          <div className={styles["pdp_image"]}>
+            <img src={product?.images[0]} alt="" />
           </div>
-        </Paper>
+          <Paper variant="elevation" className={styles["pdp_detail"]}>
+            <h2>{product.title}</h2>
+            <p>{product.price}</p>
+            <p>Rating : {product.rating}</p>
+            <div className={styles["add-to-cart"]}>
+              <Button>Add</Button>
+            </div>
+          </Paper>
         </Stack>
       </Stack>
     </div>
