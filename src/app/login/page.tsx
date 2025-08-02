@@ -1,30 +1,31 @@
-"use client";
+'use client';
 
-import { Button, Card, CardContent, Input, TextField } from "@mui/material";
+import { Button, Card, CardContent, Input, TextField } from '@mui/material';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function Login() {
   const route = useRouter();
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const handleLogin = async function () {
-    const response = await fetch("/api/login", {
-      method: "POST",
+    const response = await fetch('/api/login', {
+      method: 'POST',
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
       },
       body: JSON.stringify(formData),
     });
 
     const data = await response.json();
+
     if (data.success) {
-      route.push("/profile");
+      route.push('/profile');
     }
   };
 
@@ -38,7 +39,7 @@ export default function Login() {
   };
 
   return (
-    <Card sx={{maxWidth:600}}>
+    <Card sx={{ maxWidth: 600 }}>
       <CardContent>
         <TextField
           label="Email"
