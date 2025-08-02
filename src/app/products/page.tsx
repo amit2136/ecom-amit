@@ -5,8 +5,6 @@ import ProductList from "@/components/ProductList";
 import style from "./Product.module.css";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
 
-
-
 interface Product {
   id: number;
   title: string;
